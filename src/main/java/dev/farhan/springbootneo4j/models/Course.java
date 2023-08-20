@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Relationship;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,11 +16,15 @@ import org.springframework.data.neo4j.core.schema.Node;
 @Node
 public class Course {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
     private String identifier;
     private String title;
     private String teacher;
+
+    @Relationship(type = "BELONGS_TO", direction = Relationship.Direction.INCOMING)
+    private List<Lesson> lessons;
 
 
 }
