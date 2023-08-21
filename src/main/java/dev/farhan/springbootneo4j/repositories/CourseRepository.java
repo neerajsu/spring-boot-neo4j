@@ -14,7 +14,7 @@ public interface CourseRepository extends Neo4jRepository<Course, Long> {
 
     Optional<Course> findCourseByIdentifier(String identifier);
 
-    @Query("MATCH (:User {username: $username})-[:ENROLLED_IN]->(courses:Courses return courses")
+    @Query("MATCH (:User {username: $username})-[:ENROLLED_IN]->(courses:Course) return courses")
     List<Course> findAllEnrolledCoursesByUsername(String username);
 
 }
