@@ -30,12 +30,12 @@ public class CourseService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404)));
     }
 
-    public boolean getEnrollmentStatus(String username, String courseIdentifier) {
-        return userRepository.findEnrollmentStatus(username, courseIdentifier);
+    public boolean getEnrolmentStatus(String username, String courseIdentifier) {
+        return userRepository.findEnrolmentStatus(username, courseIdentifier);
     }
 
     public CourseEnrolmentQueryResult enrollIn(String username, String courseIdentifier) {
-        return userRepository.createEnrollmentRelationship(username, courseIdentifier);
+        return userRepository.createEnrolmentRelationship(username, courseIdentifier);
     }
 
     public List<Course> getAllEnrolledCoursesByUsername(String username) {

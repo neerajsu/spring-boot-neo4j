@@ -52,6 +52,8 @@ public class CourseEnrolmentController {
                         .title(c.getTitle())
                         .identifier(c.getIdentifier())
                         .teacher(c.getTeacher())
+                        .isEnrolled(true)
+                        .lessons(lessonService.getAllLessonsByCourseIdentifier(c.getIdentifier()))
                         .build())
                 .toList();
         return new ResponseEntity<>(courseDTOs, HttpStatus.OK);
