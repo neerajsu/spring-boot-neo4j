@@ -52,3 +52,7 @@ DETACH DELETE n
 ```
 
 After removing all nodes, you can execute statements/query in initDatabase.script to reset data
+
+## Postman collection
+
+The collection used for running api queries is present in [Springboot-neo4j.postman_collection.json](/Springboot-neo4j.postman_collection.json) file. You can import it into [postman](https://www.postman.com/downloads/) as a collection
