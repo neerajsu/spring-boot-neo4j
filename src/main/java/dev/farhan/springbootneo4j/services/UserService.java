@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @Slf4j
 public class UserService {
@@ -21,7 +23,7 @@ public class UserService {
 
     public User createUser(CreateUserRequest createUserRequest) {
 
-        var userAlreadyPresentOptional = userRepository.findUserByUsername(createUserRequest.getUsername());
+        var userAlreadyPresentOptional = findUserByUsername(createUserRequest.getUsername());
         if (userAlreadyPresentOptional.isEmpty()) {
             User user = new User();
             user.setName(createUserRequest.getName());
@@ -34,6 +36,10 @@ public class UserService {
             log.info("User " + createUserRequest.getUsername() + " is already present");
             return userAlreadyPresentOptional.get();
         }
+    }
+
+    public Optional<User> findUserByUsername(String username) {
+        return userRepository.findUserByUsername(username);
     }
 
 }
