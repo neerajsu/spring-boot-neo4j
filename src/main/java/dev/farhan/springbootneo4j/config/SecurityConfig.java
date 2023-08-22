@@ -34,7 +34,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
-                .authorizeHttpRequests(auth -> auth.requestMatchers("api/v1/auth/me", "api/v1/enrolments", "api/v1/enrolments/**")
+                .authorizeHttpRequests(auth -> auth.requestMatchers("api/v1/auth/me", "api/v1/enrolments/**")
                         .authenticated()
                         .anyRequest()
                         .permitAll()
@@ -50,7 +50,7 @@ public class SecurityConfig {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
 
         //TODO : Make sure origin list comes from .env file
-        corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000", "http:127.0.0.1:3000"));
+        corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000", "http:127.0.0.1:3000", "http://localhost:8080"));
         corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PATCH", "PUT", "DELETE", "HEAD"));
         corsConfiguration.setAllowCredentials(true);
         corsConfiguration.setAllowedHeaders(List.of("Authorization", "Request-Type", "Content-Type"));
